@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using Hik.Communication.Scs.Client;
 using Hik.Communication.Scs.Client.Tcp;
 using Hik.Communication.Scs.Server;
@@ -64,12 +65,33 @@ namespace Hik.Communication.Scs.Communication.EndPoints.Tcp
         }
 
         /// <summary>
+        /// Creats a Scs SSL Server that uses this end point to listen for incoming connections
+        /// </summary>
+        /// <param name="certificate">The certificate to use for the connection</param>
+        /// <returns></returns>
+        internal override IScsServer CreateSecureServer(X509Certificate certificate)
+        {
+            return new ScsTcpSslServer(this, certificate);
+        }
+
+        /// <summary>
         /// Creates a Scs Client that uses this end point to connect to server.
         /// </summary>
         /// <returns>Scs Client</returns>
         internal override IScsClient CreateClient()
         {
             return new ScsTcpClient(this);
+        }
+
+        /// <summary>
+        /// Creates a Scs SSL Client that uses this end point to connect to server
+        /// </summary>
+        /// <param name="certificateName">The expected CN on the server certificate.</param>
+        /// <param name="acceptSelfSignedCerts">Accept self signed certificates</param>
+        /// <returns></returns>
+        internal override IScsClient CreateSecureClient(string certificateName, bool acceptSelfSignedCerts)
+        {
+            return new ScsTcpSslClient(this, certificateName, acceptSelfSignedCerts);
         }
 
         /// <summary>

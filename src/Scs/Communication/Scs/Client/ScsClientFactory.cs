@@ -26,5 +26,25 @@ namespace Hik.Communication.Scs.Client
         {
             return CreateClient(ScsEndPoint.CreateEndPoint(endpointAddress));
         }
+
+        /// <summary>
+        /// Creates a new client to connect to a server using SSL
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <returns></returns>
+        public static IScsClient CreateSecureClient(ScsEndPoint endpoint, string serverName, bool acceptSelfSignedCerts)
+        {
+            return endpoint.CreateSecureClient(serverName, acceptSelfSignedCerts);
+        }
+
+        /// <summary>
+        /// Creates a new client to connect to a server using SSL
+        /// </summary>
+        /// <param name="endpointAddress"></param>
+        /// <returns></returns>
+        public static IScsClient CreateSecureClient(string endpointAddress)
+        {
+            return CreateClient(ScsEndPoint.CreateEndPoint(endpointAddress));
+        }
     }
 }
