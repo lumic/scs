@@ -4,6 +4,7 @@ SCS - TCP Server/Client Communication and RMI Framework
 ### Latest changes
 - Added support for SSL
 - Added support for binding to IP address from server - thanks to https://github.com/lor3/scs
+- Added support for named pipes - thanks to https://github.com/lor3/scs
 
 ### What is SCS?
 
