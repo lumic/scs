@@ -2,6 +2,7 @@
 using Hik.Communication.Scs.Communication.Channels.Tcp;
 using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Hik.Communication.Scs.Client.Tcp
 {
@@ -32,7 +33,7 @@ namespace Hik.Communication.Scs.Client.Tcp
         {
             return new TcpCommunicationChannel(
                 TcpHelper.ConnectToServer(
-                    new IPEndPoint(IPAddress.Parse(_serverEndPoint.IpAddress), _serverEndPoint.TcpPort),
+                    new IPEndPoint(_serverEndPoint.IpAddress, _serverEndPoint.TcpPort),
                     ConnectTimeout
                     ));
         }

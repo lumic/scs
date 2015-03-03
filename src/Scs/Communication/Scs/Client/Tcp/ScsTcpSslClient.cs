@@ -70,7 +70,7 @@ namespace Hik.Communication.Scs.Client.Tcp
             try
             {
                 client = new TcpClient();
-                client.Connect(new IPEndPoint(IPAddress.Parse(_serverEndPoint.IpAddress), _serverEndPoint.TcpPort));
+                client.Connect(new IPEndPoint(_serverEndPoint.IpAddress, _serverEndPoint.TcpPort));
 
                 sslStream = new SslStream(
                     client.GetStream(),

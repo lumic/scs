@@ -19,6 +19,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 #endregion
 
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net.Security;
@@ -91,7 +92,7 @@ namespace Hik.Communication.Scs.Communication.Channels.Tcp
         /// </summary>
         private void StartSocket()
         {
-            _listenerSocket = new TcpListener(System.Net.IPAddress.Any, _endPoint.TcpPort);
+            _listenerSocket = new TcpListener(_endPoint.IpAddress ?? IPAddress.Any, _endPoint.TcpPort);
             _listenerSocket.Start();
         }
 
