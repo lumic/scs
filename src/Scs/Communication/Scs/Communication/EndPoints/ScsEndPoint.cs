@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using Hik.Communication.Scs.Client;
+using Hik.Communication.Scs.Communication.EndPoints.Pipes;
 using Hik.Communication.Scs.Communication.EndPoints.Tcp;
 using Hik.Communication.Scs.Server;
 
@@ -48,6 +49,8 @@ namespace Hik.Communication.Scs.Communication.EndPoints
             {
                 case "tcp":
                     return new ScsTcpEndPoint(address);
+                case NamedPipeEndPoint.PROTOCOL:
+                    return new NamedPipeEndPoint(address);
                 default:
                     throw new ApplicationException("Unsupported protocol " + protocol + " in end point " + endPointAddress);
             }
