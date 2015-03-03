@@ -1,6 +1,10 @@
 SCS - TCP Server/Client Communication and RMI Framework
 ======================================================================
 
+### Latest changes
+- Added support for SSL
+- Added support for binding to IP address from server
+
 ### What is SCS?
 
 - It is well documented open source server/client framework.
